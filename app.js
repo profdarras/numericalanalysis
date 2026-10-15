@@ -29,6 +29,9 @@ function fmt(x, d) {
 
 /* ---------- safe expression compiling (math.js) ---------- */
 function compileExpr(str) {
+  if (typeof window.math === 'undefined') {
+    throw new Error('The math.js library failed to load. Make sure the vendor/ folder (vendor/math.min.js) was uploaded to the site, then hard-refresh (Ctrl+F5).');
+  }
   const compiled = math.compile(str);
   return compiled;
 }
